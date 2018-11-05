@@ -56,3 +56,33 @@ The data is independent in my test, it shows at the top of the code of the test.
 
 ## Extra features.
 About another model - factory I haven't written, I think it will be the same test like this, even the code may just change a little.
+About the git, I forgot to save the change step by step.So I annotate all, and the git this step by step. I suppose it may show no change, so I give the git log below
+commit c56b9905cdadf22cdd81a0753ec654b20f7150aa (HEAD -> master, delete-imitations-test)
+Author: Yuming Su <877385836@qq.com>
+Date:   Mon Nov 5 22:42:58 2018 +0000
+
+    Delete imitation endpoint tested
+
+commit 23224cade3113bb32082125b19e47d84ffd03c3e (upreport-imitations-test)
+Author: Yuming Su <877385836@qq.com>
+Date:   Mon Nov 5 22:41:20 2018 +0000
+
+    Updated upreport imitation endpoint tested
+
+commit a688d0d27f6b6126f0fd9bfe035878fb2395768b (add-imitations-test)
+Author: Yuming Su <877385836@qq.com>
+Date:   Mon Nov 5 22:36:14 2018 +0000
+
+    Add imitation endpoint tested
+
+commit 183b2564a4c2d60e5aee283a22118705aa308c90 (get-imitations-test)
+Author: Yuming Su <877385836@qq.com>
+Date:   Mon Nov 5 22:33:56 2018 +0000
+
+    Get imitations endpoint tested
+
+commit ad778d0447db0cfed3652398e8983aef3d15557f
+Author: Yuming Su <877385836@qq.com>
+Date:   Mon Nov 5 22:30:02 2018 +0000
+
+    API test setup
