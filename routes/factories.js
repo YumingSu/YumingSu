@@ -103,33 +103,4 @@ router.findTotalReports = (req, res) => {
     });
 }
 
-router.findByPlace = (req, res) => {
-    res.setHeader('Content-Type','application/json');
-    var keyword = req.params.place;
-    var _filter = {
-        $or:[
-            {
-                place:{$regex:keyword,$options:'$i'}
-            }
-        ]
-    };
-    var count = 0;
-    Factory.count(_filter,function(err,factory){
-        if (err){
-            res.json({errmsq : err});
-        }
-        else{
-            count = factory;
-        }}
-    );
-    Factory.find(_filter).limit(10).sort({"_id": -1}).exec(function(err,factories){
-        if(err || factories.length == 0){
-            res.json({message:"Factories NOT Found!",errmsq:err});
-        }else{
-            res.send(JSON.stringify(factories,null,5));
-        }
-    });
-}
-
-
 module.exports = router;

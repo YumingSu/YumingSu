@@ -29,11 +29,10 @@ app.use('/users', usersRouter);
 app.get('/imitations', imitations.findAll);
 app.get('/imitations/reports', imitations.findTotalReports);
 app.get('/imitations/:id', imitations.findOne);
-app.get('/imitations/brands/:brand', imitations.findByBrand);
+app.get('/imitations/brand', imitations.findByBrand);
 app.get('/factories', factories.findAll);
 app.get('/factories/:id', factories.findOne);
 app.get('/factories/reports', factories.findTotalReports);
-app.get('/factories/places/:place', factories.findByPlace);
 
 app.post('/imitations',imitations.addImitation);
 app.post('/factories',factories.addFactory);
@@ -41,27 +40,42 @@ app.post('/factories',factories.addFactory);
 app.put('/imitations/:id/report', imitations.incrementReports);
 app.put('/factories/:id/report', factories.incrementReports);
 
-app.delete('/imitations/:id', imitations.deleteImitation);
+
 app.delete('/factories/:id', factories.deleteFactory);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    next(createError(404));
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
-// error handler
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'dev') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+if (process.env.NODE_ENV !== 'test') {
+    app.use(logger('dev'));
+}
+
+// production error handler
+// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
-
-
-
 
 module.exports = app;

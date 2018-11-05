@@ -37,11 +37,21 @@ router.findOne = (req, res) => {
         if (err)
           res.send('Imitations NOT FOUND!!');
         else
-          res.send(imitation,null,5);
+          res.send(err);
     });
 }
+router.findByBrand = (req,res) =>{
+    res.setHeader('Content-Type', 'application/json');
+
+    var imitation = getByBrand(imitations,req.params.brand);
+
+    if (imitation != null)
+        res.send(JSON.stringify(imitation,null,5));
+    else
+        res.send('Imitations NOT Found!!');
 
 
+}
 
 function getByValue(array, id) {
     var result  = array.filter(function(obj){return obj.id == id;} );
@@ -76,15 +86,19 @@ router.addImitation = (req, res) => {
 router.incrementReports = (req, res) => {
 
     Imitation.findById(req.params.id, function(err,imitation) {
-        if (err)
-            res.send('Imitation NOT Reported Successfully!!');
+        if (err) {
+            res.status(404);
+            res.json({message: 'Imitation NOT Reported Successfully!!'});
+        }
         else {
             imitation.reports += 1;
             imitation.save(function (err) {
-                if (err)
-                    res.send('Invalid Imitation!! NOT Reported Successfully!!');
+                if (err){
+                    res.status(404)
+                    res.json({message:'Invalid Imitation!! NOT Reported Successfully!!'});
+                }
                 else
-                res.send('Imitation Reported Successfully!!');
+                res.json({message:'Imitation Reported Successfully!!'});
             });
         }
     });
@@ -110,32 +124,5 @@ router.findTotalReports = (req, res) => {
     });
 }
 
-router.findByBrand = (req, res) => {
-    res.setHeader('Content-Type','application/json');
-    var keyword = req.params.brand;
-    var _filter = {
-        $or:[
-            {
-                brand:{$regex:keyword,$options:'$i'}
-            }
-        ]
-    };
-    var count = 0;
-    Imitation.count(_filter,function(err,imitation){
-        if (err){
-            res.json({errmsq : err});
-        }
-        else{
-            count = imitation;
-        }}
-    );
-    Imitation.find(_filter).limit(10).sort({"_id": -1}).exec(function(err,imitations){
-        if(err || imitations.length == 0){
-            res.json({message:"Imitations NOT Found!",errmsq:err});
-        }else{
-            res.send(JSON.stringify(imitations,null,5));
-        }
-    });
-}
 
 module.exports = router;
