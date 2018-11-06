@@ -15,29 +15,6 @@ To test this app if can run the all functions correctly,e.g. get all imitations,
 
 ## Data storage.
 The data is independent in my test, it shows at the top of the code of the test. Each 'it' has been tested, it wii return to this setting storage.
-
-        let datastore1 = new Datastore({
-            _id:"5be05619bf769d0c48480d28",
-            brand:'Coach',
-            type:  'bag',
-            price: 350,
-            reports: 20
-        });
-        let datastore2 = new Datastore({
-            _id: "5be05619bf769d0c48480d29",
-            brand:'Hermès',
-            type:  'bag',
-            price: 500,
-            reports: 13
-        });
-        let datastore3 = new Datastore({
-            _id:"5be05619bf769d0c48480d2a",
-            brand:'Chanel',
-            type:  'shirt',
-            price: 310,
-            reports: 8
-        });
-
 ## Sample Test execution.
 
        suyumingdeAir:Webappassignment1 suyuming$ npm test
@@ -78,7 +55,11 @@ The data is independent in my test, it shows at the top of the code of the test.
 [ Markdown Tip: By indenting the above listing, GitHub will display it in a 'box' and preserve any formatting.]
 
 ## Extra features.
+The github website:https://github.com/YumingSu/YumingSu
+
 About another model - factory I haven't written, I think it will be the same test like this, even the code may just change a little.
+
+
 About the git, I forgot to save the change step by step.So I annotate all, and the git this step by step. I suppose it may show no change, so I give the git log below
 commit c56b9905cdadf22cdd81a0753ec654b20f7150aa (HEAD -> master, delete-imitations-test)
 Author: Yuming Su <877385836@qq.com>
