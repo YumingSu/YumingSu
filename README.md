@@ -15,6 +15,29 @@ To test this app if can run the all functions correctly,e.g. get all imitations,
 
 ## Data storage.
 The data is independent in my test, it shows at the top of the code of the test. Each 'it' has been tested, it wii return to this setting storage.
+
+        let datastore1 = new Datastore({
+            _id:"5be05619bf769d0c48480d28",
+            brand:'Coach',
+            type:  'bag',
+            price: 350,
+            reports: 20
+        });
+        let datastore2 = new Datastore({
+            _id: "5be05619bf769d0c48480d29",
+            brand:'Hermès',
+            type:  'bag',
+            price: 500,
+            reports: 13
+        });
+        let datastore3 = new Datastore({
+            _id:"5be05619bf769d0c48480d2a",
+            brand:'Chanel',
+            type:  'shirt',
+            price: 310,
+            reports: 8
+        });
+
 ## Sample Test execution.
 
        suyumingdeAir:Webappassignment1 suyuming$ npm test
