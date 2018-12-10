@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "scripts": {
-    "test": "mocha test/routes/Imitation-Test.js"
+    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register test/routes/Imitation-Test.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
